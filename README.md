@@ -1,4 +1,4 @@
-# Initialize TARS
+# Initialize CELESTE
 Follow the below steps to initialize CELESTE.
 
             METHOD A - DOCKER
