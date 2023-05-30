@@ -1,5 +1,5 @@
 # Initialize TARS
-Follow the below steps to initialize TARS.
+Follow the below steps to initialize CELESTE.
 
             METHOD A - DOCKER
  - Pull down the docker image.
