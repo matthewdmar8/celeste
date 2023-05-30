@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CELESTE AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="top">
+        <div class="logo">
+          <i class="bx bxl-codepen"></i>
+          <span>CELESTE</span>
+        </div>
+        <i class='bx bxs-cog' id="btn"></i>
+      </div>
+      <div class="user">
+        <div>
+          <p class="bold">Sasqe</p>
+          <p>Admin</p>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a href="https://github.com/matthewdmar8" target="_blank">
+            <i class="bx bxl-github"></i>
+            <span class="nav-item">Github</span>
+          </a>
+          <span class="tooltip">Matthew's Github</span>
+        </li>
+        <li>
+          <a href="" onclick="clearChat()">
+            <i class='bx bxs-plus-square'></i>
+            <span class="nav-item">Chat</span>
+          </a>
+          <span class="tooltip">New</span>
+        </li>
+        <li>
+          <li>
+            <a href="" onclick="return false;" id="key">
+              <i class='bx bxs-user'></i>
+              <span class="nav-item">Key</span>
+            </a>
+          </li>
+          <li>
+          <a href="#" onclick="return false;" id="connect">
+            <i class='bx bx-wifi'></i>
+            <span class="nav-item">Connect</span>
+          </a>
+          <span>
+            <textarea id="keyarea" rows="1" cols="1" class="keyarea" placeholder="Auth Key..."></textarea>
+          </span>
+          <span>
+          <textarea id="iparea" rows="1" cols="1" class="iparea" placeholder="IP Address..."></textarea>
+          </span>
+        </li>
+        <li>
+          <a href="#" onclick="return false;" id="whisper">
+            <i class='bx bxs-microphone'></i>
+            <span class="nav-item">Whisper</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="app">
+      <div id="chat_container"></div>
+  
+      <form>
+        <textarea name="prompt" rows="1" tabindex="0" cols="1" class="no-resize" placeholder="Ask CELESTE..."></textarea>
+        <button type="submit"><img src="assets/send.svg" alt="send" />  
+      </form>
+      
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+  <script>
+    let btn = document.querySelector('#btn');
+    let newChat = document.querySelector('#newChat');
+    let sidebar = document.querySelector('.sidebar');
+    var show = document.getElementById('show');
+    var textarea = document.getElementById('iparea');
+    var keyarea = document.getElementById('keyarea');
+    let connect = document.querySelector('#connect');
+    let timeoutId;
+    let timeoutId2;
+    // Update localStorage when the value of the text area changes
+    textarea.addEventListener('input', () => {
+      localStorage.setItem('ip', textarea.value);
+    });
+    keyarea.addEventListener('input', () => {
+      localStorage.setItem('key', keyarea.value);
+    });
+
+    // Retrieve the stored value and set it as the value of the text area
+    window.addEventListener('load', () => {
+      const storedIp = localStorage.getItem('ip');
+      const storedKey = localStorage.getItem('key');
+      if (storedIp) {
+        textarea.value = storedIp;
+      }
+      if (storedKey) {
+        keyarea.value = storedKey;
+      }
+    });
+    connect.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId);
+      
+      textarea.style.display = 'block';
+      textarea.style.animation = 'riseWidth 1s 0s normal forwards';
+    });
+
+    connect.addEventListener('mouseleave', function() {
+      
+      timeoutId = setTimeout(function() {
+        textarea.style.animation = 'closeWidth 0.1s forwards';
+        setTimeout(function() {
+          textarea.style.display = 'none';
+          textarea.style.animation = '';
+        }, 200);
+      }, 400);
+    });
+    
+    textarea.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId);
+    });
+
+    textarea.addEventListener('mouseleave', function() {
+      timeoutId = setTimeout(function() {
+        textarea.style.animation = 'closeWidth 0.1s forwards';
+        setTimeout(function() {
+          textarea.style.display = 'none';
+          textarea.style.animation = '';
+        }, 200);
+      }, 400);
+    });
+
+
+
+    key.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId2);
+      
+      keyarea.style.display = 'block';
+      keyarea.style.animation = 'riseWidth 1s 0s normal forwards';
+    });
+
+    key.addEventListener('mouseleave', function() {
+      
+      timeoutId2 = setTimeout(function() {
+        keyarea.style.animation = 'closeWidth 0.1s forwards';
+        setTimeout(function() {
+          keyarea.style.display = 'none';
+          keyarea.style.animation = '';
+        }, 200);
+      }, 400);
+    });
+    
+    keyarea.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId2);
+    });
+
+    keyarea.addEventListener('mouseleave', function() {
+      timeoutId2 = setTimeout(function() {
+        keyarea.style.animation = 'closeWidth 0.1s forwards';
+        setTimeout(function() {
+          keyarea.style.display = 'none';
+          keyarea.style.animation = '';
+        }, 200);
+      }, 400);
+    });
+  </script>
+</html>
