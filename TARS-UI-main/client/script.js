@@ -116,7 +116,7 @@ window.onload = function() {
     console.log(error)
     clearInterval(loadInterval)
     greetingDiv.innerHTML = ""
-    greetingDiv.innerHTML = "There was an error connecting to TARS. Are you authenticated?"
+    greetingDiv.innerHTML = "There was an error connecting to CELESTE. Are you authenticated?"
     greetingDiv.style.color = '#c0392b'; // Set the text color to red
     form.querySelector('textarea').removeAttribute('disabled');
     console.error(error);
@@ -185,7 +185,7 @@ window.onload = function() {
       clearInterval(loadInterval)
       messageDiv.innerHTML = ""
       
-      messageDiv.innerHTML = "An error occured. Please check your authentication, and TARS' status."
+      messageDiv.innerHTML = "An error occured. Please check your authentication, and CELESTE'S status."
       messageDiv.style.color = '#c0392b'; // Set the text color to red
       form.querySelector('textarea').removeAttribute('disabled');
       console.error(error);
