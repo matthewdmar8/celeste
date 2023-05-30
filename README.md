@@ -15,7 +15,7 @@ Follow the below steps to initialize CELESTE.
  - You can also use the UI client to send requests. Make sure you've typed your API key and machine's IP address into the side navigation bar's respective slots.
  -
  For the UI, run it by installing vite to your machine:
-                        npm install vite
+                        [npm install vite]
  
  Then, run the script: 
-                        npm run dev
+                        [npm run dev]
